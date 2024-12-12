@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function reservationDetail() {
@@ -11,8 +11,9 @@ export default function reservationDetail() {
     const [date, setDate] = useState("");
 
     useEffect(() => {
+        if (!id) return;
         const savedReservations = JSON.parse(localStorage.getItem("reservations")) || [];
-        const foundReservation = savedReservations.find(res => res.id !== parseInt(id));
+        const foundReservation = savedReservations.find(res => res.id === parseInt(id));
         if (foundReservation) {
             setReservation(foundReservation);
             setName(foundReservation.name);
@@ -42,6 +43,7 @@ export default function reservationDetail() {
     if (!reservation) return <p>Cargando</p>;
 
     return (
+        import "../styles.css";
         <div>
             <h1>Detalles Reserva</h1>
             {isEditing ? (
