@@ -37,7 +37,7 @@ export default function Home() {
       <ul>
         {reservations.map((res) => (
           <li key={res.id}>
-            <Link href={`/reservation/${res.id}`}>
+            <Link href={`/reservation/?id=${res.id}`}>
               {res.name} - {res.date}
             </Link>
           </li>
